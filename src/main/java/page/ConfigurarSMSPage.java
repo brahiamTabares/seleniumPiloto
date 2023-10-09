@@ -16,11 +16,7 @@ public class ConfigurarSMSPage extends SMSpage {
         type(codigo,nameSMSLocator);
         type(descripcionP,descriptionLocator);
         click(configBtnLocator);
-
-
     }
-    public boolean isHomePageDisplayed(){
-        return  true;
 
-    }
+
 }

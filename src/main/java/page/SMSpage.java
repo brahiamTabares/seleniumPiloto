@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class SMSpage extends BasePage {
 
@@ -20,21 +21,10 @@ public class SMSpage extends BasePage {
     public SMSpage(WebDriver driver) {super(driver);}
 
     public boolean isHomePageDisplayed() throws InterruptedException{
-        boolean value = false;
-        List<By> elements = new ArrayList<>();
-        elements.add((exitBtnLocator));
-        elements.add((menuLocator));
-        elements.add((returnLocator));
-        elements.add((nextLocator));
 
-        for (By element: elements) {
-            if(isDisplayed(element)) {
-                value=true;
-                break;
-            }
+         return Stream.of(exitBtnLocator,menuLocator,returnLocator,nextLocator)
+                 .anyMatch(this::isDisplayed);
 
-        }
-        return value;
     }
 
     public String getTitleSMS (){
@@ -47,8 +37,11 @@ public class SMSpage extends BasePage {
         click(By.xpath(newStep));
     }
 
+    public void corregirPaso(){
+           click(nextLocator);
+        }
+    }
 
-}
 
 
 

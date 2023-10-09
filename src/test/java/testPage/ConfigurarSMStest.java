@@ -30,5 +30,6 @@ public class ConfigurarSMStest extends BaseTestSMS {
         String codigo = faker.app().name();
         String descripcionP = faker.lorem().sentence();
         configurarSMSPage.configurarSms(codigo,descripcionP);
+        // agregar la verificacion con el mensaje de operacion completa
     }
 }
