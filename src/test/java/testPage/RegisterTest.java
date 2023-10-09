@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RegisterTest extends BaseTest {
 
-    private WebDriver driver;
     RegisterPage registerPage;
     Faker faker = new Faker();
 
@@ -36,7 +35,8 @@ public class RegisterTest extends BaseTest {
         String password=faker.internet().password();
 
       registerPage.registerUser(nombreC,nombreUsuario,password,password);
-
+      String menssage = registerPage.confirMsgRegister();
+      assertEquals("Operación completada", menssage);
 
     }
 

@@ -27,9 +27,10 @@ public class BaseTest {
     //Este metodo remplaza el metodo visit que usamos para indicar la url de la pagina de pruebas
      public void setUpDriver(){
          driver= chromeDriverConnection();
-         driver.get("http://189.50.209.188/");
          // Waint implicito, el cual nos permite esperar que uno o varios elementos esten en la pagina ya cargados
          driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+         driver.get("http://189.50.209.188/");
+
          driver.manage().window().maximize();
      }
 

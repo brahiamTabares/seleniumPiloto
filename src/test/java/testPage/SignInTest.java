@@ -3,21 +3,18 @@ package testPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
+import page.SMSpage;
 import page.SignInPage;
 
-import java.util.concurrent.TimeUnit;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SignInTest extends BaseTest {
 
-    private WebDriver driver;
     SignInPage signInPage;
 
     @BeforeEach
     public void setUp() throws Exception {
         setUpDriver();
-        driver= getDriver();
         signInPage= new SignInPage(getDriver());
     }
 
@@ -26,7 +23,11 @@ public class SignInTest extends BaseTest {
         //driver.quit();
     }
     @Test
-    public void test() {
+    public void test() throws InterruptedException {
         signInPage.signIn(usuario,password);
+
+        SMSpage smspage = new SMSpage(getDriver());
+        assertTrue(smspage.isHomePageDisplayed(),"No inicio sesión");
+
     }
 }

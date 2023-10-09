@@ -9,14 +9,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-// Esta clase contendra los elementos base para el modelo POM, donde realizamos la conexion al navegador
-// y realizamos el emboltorio ( los comando de selenium por si hay una actualizacion importante)para nuestros page objet
+/* Esta clase contendra los elementos base para el modelo POM, donde realizamos la conexion al navegador
+ y realizamos el emboltorio ( los comando de selenium por si hay una actualizacion importante)para nuestros page objet*/
 public class BasePage {
      // variable tipo Webdriver
      protected WebDriver driver;
-// construcctor de la clase que obtiene como parametro un objeto Webdriver
+     private WebDriverWait ewait;
+
+    public WebDriverWait getEwait() {
+        return ewait;
+    }
+
+    // construcctor de la clase que obtiene como parametro un objeto Webdriver
     public BasePage(WebDriver driver){
+
         this.driver=driver;
+        //Explicit wait Utiliza WebDriverWait para esperar a que el elemento configSMSLocator esté visible
+        //Se usa el Duration.ofSeconds ya que por temas de versiones del selenium no acepta el solo el 10
+         ewait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     // metodo que creara el emboltario (wraper) para los comandos de selenium Webdriver
@@ -42,29 +52,22 @@ public class BasePage {
     }
     // Este metodo nos permite escribir texto en la prueba con el comando sendkeys o type(teclear)
     public void type(String inputText,By locator){
+        driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(inputText);
     }
-    //
+
     public  void click(By locator){
-        //Explicit wait Utiliza WebDriverWait para esperar a que el elemento configSMSLocator esté visible
-        //Se usa el Duration.ofSeconds ya que por temas de versiones del selenium no acepta el solo el 10
-        WebDriverWait ewait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement configSMS = ewait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        ewait.until(ExpectedConditions.elementToBeClickable(locator));
         driver.findElement(locator).click();
     }
-    // Este metodo nos dice si el elemento esta listo para ser utilizado, en el caso que no existe nos devuelve
-    // una excepcion de que el elemento no existe, no a cargado o fue modificado
+    /* Este metodo nos dice si el elemento esta listo para ser utilizado, en el caso que no existe nos devuelve
+    una excepcion de que el elemento no existe, no a cargado o fue modificado*/
 
     public Boolean isDisplayed(By locator){
          try{
              return  driver.findElement(locator).isDisplayed();
-
          }catch (org.openqa.selenium.NoSuchElementException e){
              return  false;
          }
     }
-
-
-
-
 }

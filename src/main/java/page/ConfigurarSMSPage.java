@@ -25,7 +25,6 @@ public class ConfigurarSMSPage extends BasePage {
 
 
     }
-
     public boolean isHomePageDisplayed(){
         return  true;
 

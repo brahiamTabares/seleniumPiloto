@@ -2,12 +2,15 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+//import static org.junit.jupiter.api.Assertions.fail;
+
 
 public class SignInPage extends BasePage{
 
     By userLocator = By.name("nombreUsuario");
     By passLocator = By.id("clave");
-    By signInBtnLocator = By.id("j_idt67");
+    //By signInBtnLocator = By.id("j_idt74");
+    By signInBtnLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='Ingresar']");
     public SignInPage(WebDriver driver) {
         super(driver);
     }
@@ -16,12 +19,5 @@ public class SignInPage extends BasePage{
         type(usuario,userLocator);
         type(password,passLocator);
         click(signInBtnLocator);
-
     }
-
-    public boolean isHomePageDisplayed(){
-        return  true;
-
-    }
-
 }
