@@ -1,23 +1,24 @@
 package testPage;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 import page.ConfigurarSMSPage;
-import page.SignInPage;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ConfigurarSMStest extends BaseTest {
-
-    private WebDriver driver;
-     ConfigurarSMSPage configurarSMSPage;
-     SignInPage signInPage;
+public class ConfigurarSMStest extends BaseTestSMS {
+    ConfigurarSMSPage configurarSMSPage;
+    Faker faker = new Faker();
 
     @BeforeEach
-    public void setUp() throws Exception {
-        setUpDriver();
-        signInPage= new SignInPage(getDriver());
-        configurarSMSPage= new ConfigurarSMSPage(driver);
+    public void setUp() throws InterruptedException {
+        login();
+        configurarSMSPage= new ConfigurarSMSPage(getDriver());
+        assertTrue(configurarSMSPage.isHomePageDisplayed(), "No inició sesión correctamente");
+        if(!configurarSMSPage.getTitleSMS().contains("Configurar SMS")) {
+            configurarSMSPage.goStep("Configurar SMS");
+        }
 
     }
     @AfterEach
@@ -26,7 +27,8 @@ public class ConfigurarSMStest extends BaseTest {
     }
     @Test
     public void test() throws InterruptedException {
-        signInPage.signIn(usuario,password);
-        configurarSMSPage.configurarSms();
+        String codigo = faker.app().name();
+        String descripcionP = faker.lorem().sentence();
+        configurarSMSPage.configurarSms(codigo,descripcionP);
     }
 }
