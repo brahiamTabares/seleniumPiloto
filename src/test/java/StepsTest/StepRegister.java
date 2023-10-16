@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StepRegister {
 
- //inyeccion de dependencias usando cucumber
+    private  StepBase stepBase;
 
 
     String nombreC= "Sandra Milena Quintero";
