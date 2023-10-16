@@ -6,11 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.ConfigurarSMSPage;
 import page.ObjetivoPage;
-import page.SignInPage;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class objetivoTest extends BaseTestSMS{
+public class ObjetivoTest extends BaseTestSMS{
     ObjetivoPage objetivoPage;
     ConfigurarSMSPage configurarSMSPage;
     Faker faker = new Faker();
@@ -19,15 +19,13 @@ public class objetivoTest extends BaseTestSMS{
     public void setUp() throws InterruptedException {
         login();
         objetivoPage = new ObjetivoPage(getDriver());
-        configurarSMSPage= new ConfigurarSMSPage(getDriver());
         assertTrue(objetivoPage.isHomePageDisplayed(), "No inició sesión correctamente");
-        if(!objetivoPage.getTitleSMS().contains("Objetivo")) {
+        if (!objetivoPage.getTitleSMS().contains("Objetivo")) {
             objetivoPage.goStep("Objetivo");
-        }else if (configurarSMSPage.getTitleSMS().contains("Configurar SMS")){
-            configurarSMSPage.corregirPaso();
         }
     }
-    @AfterEach
+
+        @AfterEach
     public void tearDown() throws Exception{
         //driver.quit();
     }
@@ -36,5 +34,7 @@ public class objetivoTest extends BaseTestSMS{
         String codigo = faker.app().name();
         String descripcionO = faker.lorem().sentence();
         objetivoPage.declararObjetivo(codigo,descripcionO);
+        String menssage = objetivoPage.confirMsgObjetivo();
+        assertEquals("Operación completada", menssage);
     }
 }

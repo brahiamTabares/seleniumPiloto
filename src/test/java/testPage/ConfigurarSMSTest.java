@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import page.ConfigurarSMSPage;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ConfigurarSMStest extends BaseTestSMS {
+public class ConfigurarSMSTest extends BaseTestSMS {
     ConfigurarSMSPage configurarSMSPage;
     Faker faker = new Faker();
 
@@ -30,6 +30,7 @@ public class ConfigurarSMStest extends BaseTestSMS {
         String codigo = faker.app().name();
         String descripcionP = faker.lorem().sentence();
         configurarSMSPage.configurarSms(codigo,descripcionP);
-        // agregar la verificacion con el mensaje de operacion completa
+        System.out.println(configurarSMSPage.getTitleSMS());
+        assertTrue(configurarSMSPage.getTitleSMS().contains("Objetivo"));
     }
 }
