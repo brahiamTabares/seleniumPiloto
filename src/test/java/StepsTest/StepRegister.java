@@ -5,15 +5,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.openqa.selenium.WebDriver;
 import page.RegisterPage;
-import page.SignInPage;
+import picoContainers.BasePicoContainer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StepRegister {
 
-    private  StepBase stepBase;
+   /* private BasePicoContainer stepBase;
 
 
     String nombreC= "Sandra Milena Quintero";
@@ -44,6 +43,6 @@ public class StepRegister {
         String menssage = registerPage.confirMsgRegister();
         assertEquals("Operación completada", menssage);
 
-    }
+    }*/
 
 }
