@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class SMSpage extends BasePage {
 
@@ -17,38 +18,28 @@ public class SMSpage extends BasePage {
 
     String stepLocator = "//span[@class='ui-steps-title' and text()='%s']";
 
-    public SMSpage(WebDriver driver) {super(driver);}
-
-    public boolean isHomePageDisplayed() throws InterruptedException{
-        boolean value = false;
-        List<By> elements = new ArrayList<>();
-        elements.add((exitBtnLocator));
-        elements.add((menuLocator));
-        elements.add((returnLocator));
-        elements.add((nextLocator));
-
-        for (By element: elements) {
-            if(isDisplayed(element)) {
-                value=true;
-                break;
-            }
-
-        }
-        return value;
+    public SMSpage(WebDriver driver) {
+        super(driver);
     }
 
-    public String getTitleSMS (){
+    public boolean isHomePageDisplayed() throws InterruptedException {
+
+        return Stream.of(exitBtnLocator, menuLocator, returnLocator, nextLocator)
+                .anyMatch(this::isDisplayed);
+
+    }
+
+    public String getTitleSMS() {
         return getText(titleSMSLocator);
     }
 
-    public void goStep ( String title){
-        String newStep = String.format(stepLocator,title);
+    public void goStep(String title) {
+        String newStep = String.format(stepLocator, title);
         System.out.println(newStep);
         click(By.xpath(newStep));
     }
-
-
 }
+
 
 
 
