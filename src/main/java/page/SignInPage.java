@@ -9,7 +9,6 @@ public class SignInPage extends BasePage {
 
     By userLocator = By.name("nombreUsuario");
     By passLocator = By.id("clave");
-    //By signInBtnLocator = By.id("j_idt74");
     By signInBtnLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='Ingresar']");
 
     public SignInPage(WebDriver driver) {
