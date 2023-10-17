@@ -18,29 +18,29 @@ public class SMSpage extends BasePage {
 
     String stepLocator = "//span[@class='ui-steps-title' and text()='%s']";
 
-    public SMSpage(WebDriver driver) {super(driver);}
+    public SMSpage(WebDriver driver) {
+        super(driver);
+    }
 
     public boolean isHomePageDisplayed() throws InterruptedException{
+
 
          return Stream.of(exitBtnLocator,menuLocator,returnLocator,nextLocator)
                  .anyMatch(this::isDisplayed);
 
+
     }
 
-    public String getTitleSMS (){
+    public String getTitleSMS() {
         return getText(titleSMSLocator);
     }
 
-    public void goStep ( String title){
-        String newStep = String.format(stepLocator,title);
+    public void goStep(String title) {
+        String newStep = String.format(stepLocator, title);
         System.out.println(newStep);
         click(By.xpath(newStep));
     }
-
-    public void corregirPaso(){
-           click(nextLocator);
-        }
-    }
+}
 
 
 
