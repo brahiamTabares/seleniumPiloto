@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.SMSpage;
 import page.SignInPage;
+import recordDTO.SignInRecord;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +25,9 @@ public class SignInTest extends BaseTest {
     }
     @Test
     public void test() throws InterruptedException {
-        signInPage.signIn(usuario,password);
+
+        SignInRecord signInRecord = new SignInRecord(usuario,password);
+        signInPage.signIn(signInRecord.user(),signInRecord.password());
 
         SMSpage smspage = new SMSpage(getDriver());
         assertTrue(smspage.isHomePageDisplayed(),"No inicio sesión");

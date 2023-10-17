@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.ConfigurarSMSPage;
+import recordDTO.ConfigurarSMSRecord;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -32,7 +33,8 @@ public class ConfigurarSMSTest extends BaseTestSMS {
     public void test() throws InterruptedException {
         String codigo = faker.app().name();
         String descripcionP = faker.lorem().sentence();
-        configurarSMSPage.configurarSms(codigo, descripcionP);
+        ConfigurarSMSRecord configurarSMSRecord= new ConfigurarSMSRecord(codigo,descripcionP);
+        configurarSMSPage.configurarSms(configurarSMSRecord.nombreSMS(),configurarSMSRecord.descripCionMSM());
         System.out.println(configurarSMSPage.getTitleSMS());
         assertTrue(configurarSMSPage.getTitleSMS().contains("Objetivo"));
     }

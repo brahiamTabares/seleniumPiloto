@@ -4,10 +4,8 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 import page.RegisterPage;
-
-import java.util.function.BooleanSupplier;
+import recordDTO.RegisterRecord;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,8 +31,9 @@ public class RegisterTest extends BaseTest {
         String nombreC = faker.name().fullName();
         String nombreUsuario = faker.name().username();
         String password=faker.internet().password();
+        RegisterRecord registerRecord = new RegisterRecord(nombreC,nombreUsuario,password);
 
-      registerPage.registerUser(nombreC,nombreUsuario,password,password);
+      registerPage.registerUser(registerRecord.nombre(),registerRecord.user(),registerRecord.password(),registerRecord.password());
       String menssage = registerPage.confirMsgRegister();
       assertEquals("Operación completada", menssage);
 

@@ -37,7 +37,7 @@ public class ActualizarObjetivoTest extends BaseTestSMS{
 
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "Tempsoft";
+        String codigoObjetivo= "Otcom";
         String nuevoCod = faker.app().name();
         String nuevaDesc = faker.lorem().sentence();
         objetivoPage.actualizarObjetivo(codigoObjetivo,nuevoCod,nuevaDesc);

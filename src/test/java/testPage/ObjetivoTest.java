@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.ConfigurarSMSPage;
 import page.ObjetivoPage;
+import recordDTO.ObjetivoRecord;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,7 +35,8 @@ public class ObjetivoTest extends BaseTestSMS {
     public void test() throws InterruptedException {
         String codigo = faker.app().name();
         String descripcionO = faker.lorem().sentence();
-        objetivoPage.declararObjetivo(codigo, descripcionO);
+        ObjetivoRecord objetivoRecord= new ObjetivoRecord(codigo,descripcionO);
+        objetivoPage.declararObjetivo(objetivoRecord.codigoO(), objetivoRecord.descripcionO());
         String menssage = objetivoPage.confirMsgObjetivo();
         assertEquals("Operación completada", menssage);
     }
