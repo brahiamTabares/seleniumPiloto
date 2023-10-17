@@ -21,22 +21,24 @@ public class RegisterTest extends BaseTest {
     @BeforeEach
     public void setUp() throws Exception {
         setUpDriver();
-        registerPage= new RegisterPage(getDriver());
+        registerPage = new RegisterPage(getDriver());
 
     }
+
     @AfterEach
-    public void tearDown() throws Exception{
+    public void tearDown() throws Exception {
         //driver.quit();
     }
+
     @Test
     public void test() throws InterruptedException {
         String nombreC = faker.name().fullName();
         String nombreUsuario = faker.name().username();
-        String password=faker.internet().password();
+        String password = faker.internet().password();
 
-      registerPage.registerUser(nombreC,nombreUsuario,password,password);
-      String menssage = registerPage.confirMsgRegister();
-      assertEquals("Operación completada", menssage);
+        registerPage.registerUser(nombreC, nombreUsuario, password, password);
+        String menssage = registerPage.confirMsgRegister();
+        assertEquals("Operación completada", menssage);
 
     }
 

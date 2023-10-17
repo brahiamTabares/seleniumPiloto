@@ -1,19 +1,16 @@
 package testPage;
 
-import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import page.ConfigurarSMSPage;
 import page.ObjetivoPage;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ObjetivoTest extends BaseTestSMS {
+public class EliminarObjetivoTest extends BaseTestSMS{
+
+
     ObjetivoPage objetivoPage;
-    ConfigurarSMSPage configurarSMSPage;
-    Faker faker = new Faker();
 
     @BeforeEach
     public void setUp() throws InterruptedException {
@@ -32,10 +29,12 @@ public class ObjetivoTest extends BaseTestSMS {
 
     @Test
     public void test() throws InterruptedException {
-        String codigo = faker.app().name();
-        String descripcionO = faker.lorem().sentence();
-        objetivoPage.declararObjetivo(codigo, descripcionO);
-        String menssage = objetivoPage.confirMsgObjetivo();
-        assertEquals("Operación completada", menssage);
+        String codigoObjetivo= "B0000DYZRA";
+        objetivoPage.eliminarObjetivo(codigoObjetivo);
+        String message = objetivoPage.confirMsgObjetivo();
+        assertEquals(  "Operación completada", message);
+        assertFalse(objetivoPage.buscarObjetivo(codigoObjetivo));
+
     }
+
 }

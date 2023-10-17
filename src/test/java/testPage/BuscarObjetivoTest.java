@@ -23,16 +23,16 @@ public class BuscarObjetivoTest extends BaseTestSMS {
     }
 
     @AfterEach
-    public void tearDown() throws Exception{
+    public void tearDown() throws Exception {
         //driver.quit();
     }
+
     @Test
     public void test() throws InterruptedException {
-       String codigoObjetivo= "prueba";
+        String codigoObjetivo = "B0000DYZRA";
         objetivoPage.buscarObjetivo(codigoObjetivo);
 
     }
-
 
 
 }

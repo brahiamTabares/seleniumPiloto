@@ -15,19 +15,20 @@ public class SignInTest extends BaseTest {
     @BeforeEach
     public void setUp() throws Exception {
         setUpDriver();
-        signInPage= new SignInPage(getDriver());
+        signInPage = new SignInPage(getDriver());
     }
 
     @AfterEach
-    public void tearDown() throws Exception{
+    public void tearDown() throws Exception {
         //driver.quit();
     }
+
     @Test
     public void test() throws InterruptedException {
-        signInPage.signIn(usuario,password);
+        signInPage.signIn(usuario, password);
 
         SMSpage smspage = new SMSpage(getDriver());
-        assertTrue(smspage.isHomePageDisplayed(),"No inicio sesión");
+        assertTrue(smspage.isHomePageDisplayed(), "No inicio sesión");
 
     }
 }
