@@ -2,6 +2,7 @@ package StepsTest.StepHomeSMS;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import page.ConfigurarSMSPage;
 import page.SignInPage;
 import picoContainers.BasePageSMS;
 import picoContainers.BaseTest;
@@ -36,14 +37,5 @@ public class StepHomeSMS {
         basePageSMS.signInPage.signIn(signInRecord.user(),signInRecord.password());
     }
 
-    @And("Me encuentro en la pagina del SMS y selecciono una de las opciones del sms")
-    public void me_encuentro_en_la_pagina_del_sms_y_selecciono_una_de_las_opciones_del_sms() {
-        {
-            assertTrue(basePageSMS.configurarSMSPage.isHomePageDisplayed(), "No inició sesión correctamente");
-            if (!basePageSMS.configurarSMSPage.getTitleSMS().contains("Configurar SMS")) {
-                basePageSMS.configurarSMSPage.goStep("Configurar SMS");
-            }
 
-        }
-    }
 }

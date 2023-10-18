@@ -1,8 +1,10 @@
 package StepsTest.StepHomeSMS;
 
 import com.github.javafaker.Faker;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import page.ConfigurarSMSPage;
 import picoContainers.BasePageSMS;
 import recordDTO.ConfigurarSMSRecord;
 
@@ -11,6 +13,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class StepConfigurarSMS {
     BasePageSMS basePageSMS;
     Faker faker = new Faker();
+    @And("Me encuentro en la pagina del SMS y selecciono una de las opciones del sms")
+    public void me_encuentro_en_la_pagina_del_sms_y_selecciono_una_de_las_opciones_del_sms() {
+        {   basePageSMS.configurarSMSPage=new ConfigurarSMSPage(basePageSMS.baseTest.getDriver());
+            assertTrue(basePageSMS.configurarSMSPage.isHomePageDisplayed(), "No inició sesión correctamente");
+            if (!basePageSMS.configurarSMSPage.getTitleSMS().contains("Configurar SMS")) {
+                basePageSMS.configurarSMSPage.goStep("Configurar SMS");
+            }
+
+        }
+    }
 
     public StepConfigurarSMS(BasePageSMS basePageSMS) {
         this.basePageSMS = basePageSMS;
