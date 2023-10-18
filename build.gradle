@@ -29,6 +29,12 @@ dependencies {
     implementation group: 'io.cucumber', name: 'cucumber-junit-platform-engine', version: '7.14.0'
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer
     implementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '7.14.0'
+    // https://mvnrepository.com/artifact/jakarta.enterprise/jakarta.enterprise.cdi-api
+    implementation group: 'jakarta.enterprise', name: 'jakarta.enterprise.cdi-api', version: '4.0.1'
+    // https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api
+    implementation group: 'jakarta.activation', name: 'jakarta.activation-api', version: '2.1.2'
+
+
 
 
 
