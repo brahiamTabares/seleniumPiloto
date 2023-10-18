@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class ObjetivoPage extends SMSpage {
@@ -116,5 +117,33 @@ public class ObjetivoPage extends SMSpage {
 
         return getText(confirMsgActualizar);
     }
+    public boolean isDisplayeObjetivePage() {
+        getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(objetivoLocator));
+        return isDisplayed(objetivoLocator);
+    }
+
+    public String elementoAleatorio() {
+        getEwait().until(ExpectedConditions.presenceOfElementLocated(tableLocator));
+        List<WebElement> filas = findElements(By.cssSelector("#tabla\\:j_idt602 tr"));
+
+        if (filas.size() == 1 && filas.get(0).getText().contains("No se encontraron registros")) {
+            System.out.println("La tabla está vacía. No se encontraron registros.");
+            return "No se encontraron registros"; // Devolver un mensaje en caso de que no haya registros
+        }
+
+        // Generar un número aleatorio entre 0 y la cantidad de filas (incluyendo el encabezado)
+        Random random = new Random();
+        int indiceAleatorio = random.nextInt(filas.size());
+
+        WebElement filaAleatoria = filas.get(indiceAleatorio);
+        List<WebElement> celdas = filaAleatoria.findElements(By.tagName("td"));
+
+        // Devolver el texto de una celda aleatoria de la fila seleccionada
+        int indiceCeldaAleatoria = random.nextInt(celdas.size());
+        return celdas.get(indiceCeldaAleatoria).getText();
+    }
+
+
 
 }
+
