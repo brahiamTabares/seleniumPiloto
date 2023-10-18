@@ -21,7 +21,6 @@ public class StepEliminarObjetivo {
     @When("Busco el objetivo y elimino el objetivo")
     public void busco_el_objetivo_y_elimino_el_objetivo() {
         basePageSMS.objetivoPage = new ObjetivoPage(basePageSMS.baseTest.getDriver());
-        //codigoObjetivo= "npu";
          codigoObjetivo=basePageSMS.objetivoPage.elementoAleatorio();
          basePageSMS.objetivoPage.eliminarObjetivo(codigoObjetivo);
 
