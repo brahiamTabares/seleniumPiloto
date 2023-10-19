@@ -4,7 +4,7 @@ import page.*;
 
 public class BasePageSMS {
 
-    public  BaseTest baseTest;
+    public BaseTest baseTest;
     public  SignInPage signInPage;
 
     public ConfigurarSMSPage configurarSMSPage;
