@@ -13,12 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ActualizarObjetivoTest extends BaseTestSMS{
     Faker faker = new Faker();
 
-    //<span class="ui-icon ui-icon-pencil"></span>
-    //<div id="tabla:j_idt602:0:j_idt612"
-    //<span class="ui-icon ui-icon-pencil"></span>
-
 
     ObjetivoPage objetivoPage;
+    String codigoObjetivo;
 
     @BeforeEach
     public void setUp() throws InterruptedException {
@@ -37,9 +34,9 @@ public class ActualizarObjetivoTest extends BaseTestSMS{
 
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "Otcom";
         String nuevoCod = faker.app().name();
         String nuevaDesc = faker.lorem().sentence();
+        codigoObjetivo=objetivoPage.elementoAleatorio();
         objetivoPage.actualizarObjetivo(codigoObjetivo,nuevoCod,nuevaDesc);
         String message = objetivoPage.confirMSGAcualizarObjetivo();
         assertEquals(  "Operación completada", message);

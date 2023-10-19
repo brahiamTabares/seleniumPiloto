@@ -11,6 +11,7 @@ public class EliminarObjetivoTest extends BaseTestSMS{
 
 
     ObjetivoPage objetivoPage;
+    String codigoObjetivo;
 
     @BeforeEach
     public void setUp() throws InterruptedException {
@@ -29,7 +30,8 @@ public class EliminarObjetivoTest extends BaseTestSMS{
 
     @Test
     public void test() throws InterruptedException {
-        String codigoObjetivo= "B0000DYZRA";
+
+        codigoObjetivo=objetivoPage.elementoAleatorio();
         objetivoPage.eliminarObjetivo(codigoObjetivo);
         String message = objetivoPage.confirMsgObjetivo();
         assertEquals(  "Operación completada", message);
