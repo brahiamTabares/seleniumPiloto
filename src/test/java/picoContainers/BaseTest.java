@@ -13,23 +13,16 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     //Datos quemados para el logueo(Opcion no recomenadle hay que  mejorarlo)
 
-    private static WebDriver driver;
-    private static String usuario = "brahiam";
-    private static String password = "1234";
+    private  WebDriver driver;
 
-    public static String getUsuario() {
-        return usuario;
-    }
 
-    public static String getPassword() {
-        return password;
-    }
 
-    public static WebDriver getDriver() {
+
+    public  WebDriver getDriver() {
         return driver;
     }
 
-    @Before
+   // @Before
     public void setUpDriver() {
         driver = chromeDriverConnection();
         // Waint implicito, el cual nos permite esperar que uno o varios elementos esten en la pagina ya cargados
@@ -49,7 +42,7 @@ public class BaseTest {
     //Este metodo remplaza el metodo visit que usamos para indicar la url de la pagina de pruebas
 
 
-    @After
+    //@After
     public void tearDown() {
         driver.quit();
     }

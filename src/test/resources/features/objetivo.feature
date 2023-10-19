@@ -13,6 +13,12 @@ Feature: Objetivos SMS
     When Busco el objetivo ,ingreso los datos nuevos del objetivo
     Then muestra mensaje de operación completada y el nuevo objetivo en tabla
 
+  Scenario: Cancelar Actualizar objetivo
+    Given Estoy en la página SMS-Builder
+    And   Ingreso mi nombre de usuario  y mi contraseña para ingresar al SMS
+    When Busco el objetivo ,ingreso los datos nuevos y cancelo el actualizar
+    Then muestra mensaje de operación cancelada y el objetivo en tabla
+
   Scenario: Eliminar objetivo exitoso
     Given Estoy en la página SMS-Builder
     And   Ingreso mi nombre de usuario  y mi contraseña para ingresar al SMS

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class StepEliminarObjetivo {
 
-    WebDriver driver= BaseTest.getDriver();
+
      BasePageSMS basePageSMS;
     String codigoObjetivo;
 
@@ -23,7 +23,7 @@ public class StepEliminarObjetivo {
 
     @When("Busco el objetivo y elimino el objetivo")
     public void busco_el_objetivo_y_elimino_el_objetivo() {
-        basePageSMS.objetivoPage = new ObjetivoPage(driver);
+        basePageSMS.objetivoPage = new ObjetivoPage(basePageSMS.baseTest.getDriver());
          codigoObjetivo=basePageSMS.objetivoPage.elementoAleatorio();
          basePageSMS.objetivoPage.eliminarObjetivo(codigoObjetivo);
 

@@ -7,7 +7,7 @@ import picoContainers.BaseInicioSMS;
 import picoContainers.BaseTest;
 
 public class StepBeforeSignInCondition {
-    WebDriver driver=BaseTest.getDriver();
+
     private BaseInicioSMS baseInicioSMS;
 
     public StepBeforeSignInCondition(BaseInicioSMS baseInicioSMS) {
@@ -19,6 +19,6 @@ public class StepBeforeSignInCondition {
 
         baseInicioSMS.baseTest = new BaseTest();
         baseInicioSMS.baseTest.setUpDriver();
-        baseInicioSMS.signInPage = new SignInPage(driver);
+        baseInicioSMS.signInPage = new SignInPage(baseInicioSMS.baseTest.getDriver());
     }
 }

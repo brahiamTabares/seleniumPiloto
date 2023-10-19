@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StepObjetivoSMS {
-    WebDriver driver= BaseTest.getDriver();
 
     BasePageSMS basePageSMS;
     Faker faker= new Faker();
@@ -28,7 +27,7 @@ public class StepObjetivoSMS {
     public void ingreso_los_datos_del_codigo_y_descripcion_y_creo_el_objetivo() throws InterruptedException {
         codigoO = faker.code().asin();
         descripcionO = faker.lorem().sentence();
-        basePageSMS.objetivoPage = new ObjetivoPage(driver);
+        basePageSMS.objetivoPage = new ObjetivoPage(basePageSMS.baseTest.getDriver());
         ObjetivoRecord objetivoRecord= new ObjetivoRecord(codigoO,descripcionO);
         basePageSMS.objetivoPage.declararObjetivo(objetivoRecord.codigoO(), objetivoRecord.descripcionO());
         assertTrue(basePageSMS.objetivoPage.isHomePageDisplayed(),"No inició sesión correctamente");
