@@ -1,11 +1,13 @@
 package StepsTest.StepsInicio;
 
 import io.cucumber.java.en.Given;
+import org.openqa.selenium.WebDriver;
 import page.SignInPage;
 import picoContainers.BaseInicioSMS;
 import picoContainers.BaseTest;
 
 public class StepBeforeSignInCondition {
+    WebDriver driver=BaseTest.getDriver();
     private BaseInicioSMS baseInicioSMS;
 
     public StepBeforeSignInCondition(BaseInicioSMS baseInicioSMS) {
@@ -17,6 +19,6 @@ public class StepBeforeSignInCondition {
 
         baseInicioSMS.baseTest = new BaseTest();
         baseInicioSMS.baseTest.setUpDriver();
-        baseInicioSMS.signInPage = new SignInPage(baseInicioSMS.baseTest.getDriver());
+        baseInicioSMS.signInPage = new SignInPage(driver);
     }
 }

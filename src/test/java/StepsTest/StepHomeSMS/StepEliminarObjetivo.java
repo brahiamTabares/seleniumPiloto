@@ -2,15 +2,18 @@ package StepsTest.StepHomeSMS;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import page.ObjetivoPage;
 import picoContainers.BasePageSMS;
+import picoContainers.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class StepEliminarObjetivo {
 
+    WebDriver driver= BaseTest.getDriver();
      BasePageSMS basePageSMS;
     String codigoObjetivo;
 
@@ -20,7 +23,7 @@ public class StepEliminarObjetivo {
 
     @When("Busco el objetivo y elimino el objetivo")
     public void busco_el_objetivo_y_elimino_el_objetivo() {
-        basePageSMS.objetivoPage = new ObjetivoPage(basePageSMS.baseTest.getDriver());
+        basePageSMS.objetivoPage = new ObjetivoPage(driver);
          codigoObjetivo=basePageSMS.objetivoPage.elementoAleatorio();
          basePageSMS.objetivoPage.eliminarObjetivo(codigoObjetivo);
 

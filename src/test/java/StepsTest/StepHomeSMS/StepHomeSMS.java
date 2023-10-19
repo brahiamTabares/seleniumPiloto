@@ -2,7 +2,6 @@ package StepsTest.StepHomeSMS;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import page.ConfigurarSMSPage;
 import page.SignInPage;
 import picoContainers.BasePageSMS;
 import picoContainers.BaseTest;
