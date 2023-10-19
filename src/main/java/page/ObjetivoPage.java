@@ -25,6 +25,7 @@ public class ObjetivoPage extends SMSpage {
     By deleteObjectivoLocator = By.xpath("//*[@id='tabla:j_idt602_data']//tr/td[3]/button//span[@class='ui-button-icon-left ui-icon ui-c pi pi-trash']");
     By alertDeleteObjLocator = By.cssSelector(".ui-confirm-dialog");
     By confirmDeleteObjLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='Si']");
+    By cancelarActualizarLocator = By. cssSelector(".ui-row-editing > td:nth-child(3) a.ui-row-editor-close");
 
 
     public ObjetivoPage(WebDriver driver) {
@@ -94,6 +95,15 @@ public class ObjetivoPage extends SMSpage {
         type(nuevoCodigo, codigoActualizadoLocator);
         type(nuevaDescripcion, descripCionActualizadaLocator);
         click(btnactualizarObjetivoLocator);
+    }
+    public void cancelarActualizarObjetivo(String codigo, String nuevoCodigo, String nuevaDescripcion) {
+
+        int posObjetivo = buscarObjetivoPos(codigo);
+        List<WebElement> BtnsEditar = findElements(actualizarObjetivoBtnLocator);
+        BtnsEditar.get(posObjetivo).click();
+        type(nuevoCodigo, codigoActualizadoLocator);
+        type(nuevaDescripcion, descripCionActualizadaLocator);
+        click(cancelarActualizarLocator);
     }
 
     public void eliminarObjetivo(String codigo) {
