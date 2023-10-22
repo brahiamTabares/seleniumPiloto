@@ -2,6 +2,7 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,6 @@ public class SMSpage extends BasePage {
     By returnLocator = By.xpath("//span[@class='ui-button-icon-left ui-icon ui-c pi pi-arrow-circle-left'");
     By nextLocator = By.xpath("//span[@class='ui-button-icon-left ui-icon ui-c pi pi-arrow-circle-right'");
     By titleSMSLocator = By.id("tituloApp");
-
-
     String stepLocator = "//span[@class='ui-steps-title' and text()='%s']";
 
     public SMSpage(WebDriver driver) {
@@ -30,6 +29,8 @@ public class SMSpage extends BasePage {
     }
 
     public String getTitleSMS() {
+
+        getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(titleSMSLocator));
         return getText(titleSMSLocator);
     }
 

@@ -11,18 +11,18 @@ import java.util.stream.IntStream;
 
 public class ObjetivoPage extends SMSpage {
 
-    By objetivoLocator = By.id("formulario:j_idt596");
-    By descripObjLocator = By.id("formulario:j_idt598");
+    By objetivoLocator = By.id("formulario:j_idt83");
+    By descripObjLocator = By.id("formulario:j_idt85");
     By confirmObjLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='Aceptar']");
     By confirMsgObjetivo = By.xpath("//div[@class='ui-growl-message']/span[@class='ui-growl-title']");
-    By tableLocator = By.id("tabla:j_idt602_data");
+    By tableLocator = By.id("tabla:j_idt89_data");
 
-    By actualizarObjetivoBtnLocator = By.xpath("//*[@id='tabla:j_idt602_data']//tr/td[3]/div//span[@class='ui-icon ui-icon-pencil']");
+    By actualizarObjetivoBtnLocator = By.xpath("//*[@id='tabla:j_idt89_data']//tr/td[3]/div//span[@class='ui-icon ui-icon-pencil']");
     By codigoActualizadoLocator = By.cssSelector(".ui-row-editing > td:nth-child(1) input");
     By descripCionActualizadaLocator = By.cssSelector(".ui-row-editing > td:nth-child(2) textarea");
     By btnactualizarObjetivoLocator = By.cssSelector(".ui-row-editing > td:nth-child(3) a.ui-row-editor-check");
     By confirMsgActualizar = By.xpath("//div[@class='ui-growl-message']/span[@class='ui-growl-title']");
-    By deleteObjectivoLocator = By.xpath("//*[@id='tabla:j_idt602_data']//tr/td[3]/button//span[@class='ui-button-icon-left ui-icon ui-c pi pi-trash']");
+    By deleteObjectivoLocator = By.xpath("//*[@id='tabla:j_idt89_data']//tr/td[3]/button//span[@class='ui-button-icon-left ui-icon ui-c pi pi-trash']");
     By alertDeleteObjLocator = By.cssSelector(".ui-confirm-dialog");
     By confirmDeleteObjLocator = By.xpath("//span[@class='ui-button-text ui-c' and text()='Si']");
     By cancelarActualizarLocator = By. cssSelector(".ui-row-editing > td:nth-child(3) a.ui-row-editor-close");
@@ -49,9 +49,10 @@ public class ObjetivoPage extends SMSpage {
 
 
     public int buscarObjetivoPos(String codigoObjetivo) {
+
         getEwait().until(ExpectedConditions.presenceOfElementLocated(tableLocator));
 
-        List<WebElement> filas = findElements(By.cssSelector("#tabla\\:j_idt602 tr"));
+        List<WebElement> filas = findElements(By.cssSelector("#tabla\\:j_idt89 tr"));
 
         if (filas.size() == 1 && filas.get(0).getText().contains("No se encontraron registros")) {
             System.out.println("La tabla está vacía. No se encontraron registros.");
@@ -133,27 +134,28 @@ public class ObjetivoPage extends SMSpage {
     }
 
     public String elementoAleatorio() {
-        getEwait().until(ExpectedConditions.presenceOfElementLocated(tableLocator));
-        List<WebElement> filas = findElements(By.cssSelector("#tabla\\:j_idt602 tr"));
+            // Obtener la cantidad de filas en la tabla
+            List<WebElement> filas = findElements(By.cssSelector("#tabla\\:j_idt89_data tr"));
+            int numRows = filas.size();
 
-        if (filas.size() == 1 && filas.get(0).getText().contains("No se encontraron registros")) {
-            System.out.println("La tabla está vacía. No se encontraron registros.");
-            return "No se encontraron registros"; // Devolver un mensaje en caso de que no haya registros
+            if (numRows > 1) { // Asegurarse de que haya al menos una fila con datos
+                // Generar un índice aleatorio
+                int randomIndex = (int) (Math.random() * (numRows - 1)) + 1;
+
+                // Obtener el código y descripción del objetivo aleatorio
+                WebElement fila = filas.get(randomIndex);
+                List<WebElement> celdas = fila.findElements(By.tagName("td"));
+
+                return getText(celdas.get(0));
+
+            } return "";
+
         }
 
-        // Generar un número aleatorio entre 0 y la cantidad de filas (incluyendo el encabezado)
-        Random random = new Random();
-        int indiceAleatorio = random.nextInt(filas.size());
 
-        WebElement filaAleatoria = filas.get(indiceAleatorio);
-        List<WebElement> celdas = filaAleatoria.findElements(By.tagName("td"));
 
-        // Devolver el texto de una celda aleatoria de la fila seleccionada
-        int indiceCeldaAleatoria = random.nextInt(celdas.size());
-        return celdas.get(indiceCeldaAleatoria).getText();
+
+
+
     }
-
-
-
-}
 
