@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class StepConfigurarSMS {
 
     BasePageSMS basePageSMS;
-    WebDriver driver= BaseTest.getDriver();
+    WebDriver driver = BaseTest.getDriver();
     Faker faker = new Faker();
 
     public StepConfigurarSMS(BasePageSMS basePageSMS) {
@@ -31,13 +31,15 @@ public class StepConfigurarSMS {
         }
 
     }
+
     @And("Tengo un nombre al sms y una descripcion diligenciada")
     public void tengo_un_nombre_al_sms_y_una_descripcion_diligenciada() {
         String codigo = faker.app().name();
         String descripcionP = faker.lorem().sentence();
-        basePageSMS.configurarSMSRecord= new ConfigurarSMSRecord(codigo,descripcionP);
-        basePageSMS.configurarSMSPage.configurarSms(basePageSMS.configurarSMSRecord.nombreSMS(),basePageSMS.configurarSMSRecord.descripCionMSM());
+        basePageSMS.configurarSMSRecord = new ConfigurarSMSRecord(codigo, descripcionP);
+        basePageSMS.configurarSMSPage.configurarSms(basePageSMS.configurarSMSRecord.nombreSMS(), basePageSMS.configurarSMSRecord.descripCionMSM());
     }
+
     @Then("visualizo que me encuentro en la pagina de objetivo despues de configurar el sms")
     public void visualizo_que_me_encuentro_en_la_pagina_de_objetivo_despues_de_configurar_el_sms() {
         System.out.println(basePageSMS.configurarSMSPage.getTitleSMS());

@@ -3,6 +3,8 @@ package StepsTest;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import org.junit.AfterClass;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -13,6 +15,17 @@ import org.junit.runner.RunWith;
 
 )
 public class RunCucumberTest {
+     @AfterClass
+    public static void report(){
+     try {
+        System.out.println("Generando reporte  report.html");
+        String[] cmd = {"cmd.exe", "/c", "npm run report"};
+        Runtime.getRuntime().exec(cmd);
+        System.out.println("¡Reporte generado!");
+    }catch (Exception ex){
+        ex.printStackTrace();
+    }
+}
 
 
 }
