@@ -2,8 +2,8 @@
 Feature: Iniciar sesion
 
   Scenario: Iniciar sesión correctamente
-    Given Estoy en la página SMS-Builder
-    When Ingreso mi nombre de usuario  y mi contraseña para ingresar al SMS
+    Given Ya estoy registrado en el sms
+    When Ingreso mi nombre de usuario "brahiam" y mi contraseña "1234" para ingresar al SMS1
     Then Me muestra la pantalla principal del SMS-Builder y valido que se observe el sms
 
 

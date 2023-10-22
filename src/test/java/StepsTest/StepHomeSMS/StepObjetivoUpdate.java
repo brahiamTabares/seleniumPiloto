@@ -1,12 +1,12 @@
 package StepsTest.StepHomeSMS;
 
 import com.github.javafaker.Faker;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import page.ObjetivoPage;
 import picoContainers.BasePageSMS;
-import picoContainers.BaseTest;
+import StepsTest.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -18,14 +18,15 @@ public class StepObjetivoUpdate {
     String codigoObjetivo;
     String nuevaDesc;
     String nuevoCod;
+    WebDriver driver= BaseTest.getDriver();
 
     public StepObjetivoUpdate(BasePageSMS basePageSMS) {
         this.basePageSMS = basePageSMS;
     }
 
-    @When("Busco el objetivo ,ingreso los datos nuevos del objetivo")
+    @And("Busco el objetivo ,ingreso los datos nuevos del objetivo")
     public void busco_el_objetivo_ingreso_los_datos_nuevos_del_objetivo() {
-        basePageSMS.objetivoPage = new ObjetivoPage(basePageSMS.baseTest.getDriver());
+        basePageSMS.objetivoPage = new ObjetivoPage(driver);
         nuevoCod = faker.app().name();
         nuevaDesc = faker.lorem().sentence();
         codigoObjetivo=basePageSMS.objetivoPage.elementoAleatorio();

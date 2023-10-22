@@ -1,24 +1,34 @@
 package StepsTest.StepsInicio;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import page.SignInPage;
-import picoContainers.BaseInicioSMS;
-import picoContainers.BaseTest;
+import picoContainers.BasePageSMS;
+import StepsTest.BaseTest;
+import recordDTO.SignInRecord;
+
 
 public class StepBeforeSignInCondition {
 
-    private BaseInicioSMS baseInicioSMS;
+    BasePageSMS basePageSMS;
+    SignInRecord signInRecord;
 
-    public StepBeforeSignInCondition(BaseInicioSMS baseInicioSMS) {
-        this.baseInicioSMS = baseInicioSMS;
+    WebDriver driver= BaseTest.getDriver();
+
+    public StepBeforeSignInCondition(BasePageSMS basePageSMS) {
+        this.basePageSMS = basePageSMS;
     }
 
-    @Given("Estoy en la página SMS-Builder")
-    public void estoy_en_la_página_sms_builder() {
+    @Given("Ya estoy registrado en el sms")
+    public void ya_estoy_registrado_en_el_sms() {
 
-        baseInicioSMS.baseTest = new BaseTest();
-        baseInicioSMS.baseTest.setUpDriver();
-        baseInicioSMS.signInPage = new SignInPage(baseInicioSMS.baseTest.getDriver());
+        basePageSMS.signInPage = new SignInPage(driver);
+    }
+
+    @When("Ingreso mi nombre de usuario {string} y mi contraseña {string} para ingresar al SMS1")
+    public void ingreso_mi_nombre_de_usuario_y_mi_contraseña_para_ingresar_al_sms1(String usuario, String password) {
+        signInRecord = new SignInRecord(usuario, password);
+        basePageSMS.signInPage.signIn(signInRecord.user(), signInRecord.password());
     }
 }

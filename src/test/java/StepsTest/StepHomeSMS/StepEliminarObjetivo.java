@@ -1,12 +1,11 @@
 package StepsTest.StepHomeSMS;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import page.ObjetivoPage;
 import picoContainers.BasePageSMS;
-import picoContainers.BaseTest;
+import StepsTest.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -16,16 +15,18 @@ public class StepEliminarObjetivo {
 
      BasePageSMS basePageSMS;
     String codigoObjetivo;
+    WebDriver driver= BaseTest.getDriver();
 
     public StepEliminarObjetivo(BasePageSMS basePageSMS) {
         this.basePageSMS = basePageSMS;
     }
 
-    @When("Busco el objetivo y elimino el objetivo")
+    @And("Busco el objetivo y elimino el objetivo")
     public void busco_el_objetivo_y_elimino_el_objetivo() {
-        basePageSMS.objetivoPage = new ObjetivoPage(basePageSMS.baseTest.getDriver());
-         codigoObjetivo=basePageSMS.objetivoPage.elementoAleatorio();
-         basePageSMS.objetivoPage.eliminarObjetivo(codigoObjetivo);
+        basePageSMS.objetivoPage = new ObjetivoPage(driver);
+        codigoObjetivo=basePageSMS.objetivoPage.elementoAleatorio();
+        System.out.println(codigoObjetivo);
+        basePageSMS.objetivoPage.eliminarObjetivo(codigoObjetivo);
 
     }
     @Then("muestra mensaje de operación completada y busca el objetivo en la tabla;")
