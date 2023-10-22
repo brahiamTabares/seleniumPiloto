@@ -2,6 +2,7 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 ;
 
 public class ConfigurarSMSPage extends SMSpage {
@@ -15,6 +16,7 @@ public class ConfigurarSMSPage extends SMSpage {
     }
 
     public void configurarSms(String codigo, String descripcionP) {
+        getEwait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(nameSMSLocator));
         type(codigo, nameSMSLocator);
         type(descripcionP, descriptionLocator);
         click(configBtnLocator);
