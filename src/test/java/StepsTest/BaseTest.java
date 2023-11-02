@@ -35,14 +35,11 @@ public class BaseTest {
         screenShotStepBefore(scenario);
 
     }
-
     private WebDriver chromeDriverConnection() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         return driver;
     }
-
-
     @After
     public void tearDown(Scenario scenario){
         screenShotStepBefore(scenario);
@@ -54,8 +51,6 @@ public class BaseTest {
         scenario.attach(screenshot, "image/png", "screenshot step");
 
     }
-
-
 }
 
 

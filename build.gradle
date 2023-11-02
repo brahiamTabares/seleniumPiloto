@@ -8,20 +8,17 @@ version = '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
-
 // Agregar configuración para UTF-8
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
 
 dependencies {
-
-    //Estas son para selenium
+    //selenium
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.13.0'
     // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.5.3'
-
-    // Estas son Junit
+    // Junit
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
@@ -32,26 +29,11 @@ dependencies {
     implementation 'io.cucumber:cucumber-java:7.14.0'
     implementation 'io.cucumber:cucumber-junit:7.14.0'
 
-
-
-
-    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
-    //implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.14.0'
-    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine
-    //implementation group: 'io.cucumber', name: 'cucumber-junit-platform-engine', version: '7.14.0'
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer
     implementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '7.14.0'
-
-    //Para reportes
+    //reportes
     // https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting
     implementation group: 'net.masterthought', name: 'cucumber-reporting', version: '5.7.7'
-
-
-
-
-
-
-
 
 }
 
